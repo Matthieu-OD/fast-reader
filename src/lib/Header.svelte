@@ -7,7 +7,7 @@
 </script>
 
 <div class="w-full flex justify-between items-center">
-    <h1 class="text-5xl">Fast Reader</h1>
+    <h1 class="text-gray-900 text-5xl">Fast Reader</h1>
 
     <button type="button"
         class="{isDarkMode ? 'bg-gray-200' : 'bg-indigo-600' } relative inline-flex flex-shrink-0 h-7 w-12 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
