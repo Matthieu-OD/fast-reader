@@ -1,8 +1,8 @@
 <script>
     // helper function
     const sleep = ms => {
-        return new Promise(resolve => setTimeout(resolve, ms))
-      }
+      return new Promise(resolve => setTimeout(resolve, ms))
+    }
 
     let isReadingSection = false
     let readingSpeed = 300
@@ -23,7 +23,7 @@
     const handleReading = async () => {
         isReading = !isReading
 
-        const timeToWait = (readingSpeed * 100) / 60
+        const timeToWait = 1000 / (readingSpeed / 60)
         const words = textToRead.split(' ')
 
         while (currentIndex < words.length) {
@@ -36,9 +36,19 @@
           await sleep(timeToWait)
         }
 
-        currentIndex = 0
-        currentWord = words[0]
+        if (currentIndex === words.length) {
+          currentIndex = 0
+          currentWord = words[0]
+        }
+
         isReading = false
+    }
+
+    const handleSetStart = () => {
+      const words = textToRead.split(' ')
+
+      currentIndex = 0
+      currentWord = words[0]
     }
 
     const handleSubmit = () => {
@@ -52,7 +62,7 @@
     }
 </script>
 
-<div class="flex flex-col items-center space-y-4 w-full font-bold text-lg py-4 px-6 border-2 border-indigo-500 rounded-2xl">
+<div class="flex flex-col items-center space-y-4 h-full max-h-96 w-full font-bold text-lg py-4 px-6 border-2 border-indigo-500 rounded-2xl">
     <div class="self-start relative border border-gray-300 rounded-md px-3 py-2 shadow-sm focus-within:ring-1 focus-within:ring-indigo-600 focus-within:border-indigo-600">
         <label for="name" class="absolute -top-2 left-2 -mt-px inline-block px-1 bg-white text-xs font-medium text-gray-900">Word Per Minute</label>
         <input
@@ -93,6 +103,11 @@
               </p>
             </div>
             <div class="absolute bottom-0 inset-x-0 pl-3 pr-2 py-2 flex justify-end">
+                <button
+                    on:click={handleSetStart}
+                    class="items-center mr-4 px-6 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    Start at the beginning
+                </button>
                 <button
                     on:click={handleReading}
                     class="items-center mr-4 px-6 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">

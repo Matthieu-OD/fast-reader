@@ -4,7 +4,7 @@
   import Footer from './lib/Footer.svelte'
 </script>
 
-<main class="flex flex-col space-y-12 h-screen m-12 justify-between">
+<main class="flex flex-col space-y-12 h-screen p-12 justify-between">
   <Header />
   <Reader />
   <Footer />
