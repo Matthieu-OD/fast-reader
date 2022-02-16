@@ -7,7 +7,7 @@
     let isReadingSection = false
     let readingSpeed = 300
 
-    let textToRead = 'test with a phrase'
+    let textToRead = ''
 
     let isReading = false
 
@@ -38,6 +38,7 @@
 
         currentIndex = 0
         currentWord = words[0]
+        isReading = false
     }
 
     const handleSubmit = () => {
@@ -64,7 +65,7 @@
             placeholder="Reading Speed">
     </div>
 
-    {#if isReadingSection}
+    {#if !isReadingSection}
         <p>Enter the text you want to fast read</p>
 
         <form
