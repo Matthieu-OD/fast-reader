@@ -12,7 +12,7 @@
     let isReading = false
 
     // word we are reading + index of this word
-    let currentWord = ""
+    let currentWord = ''
     let currentIndex = 0
 
     const onChangeSpeedValue = (e) => {
